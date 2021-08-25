@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
 import { BaseModel, beforeSave, column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import Aquarium from './Aquarium'
+import Device from 'App/Models/Device'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -34,4 +35,7 @@ export default class User extends BaseModel {
 
   @hasMany(() => Aquarium)
   public aquariums: HasMany<typeof Aquarium>
+
+  @hasMany(() => Device)
+  public devices: HasMany<typeof Device>
 }
