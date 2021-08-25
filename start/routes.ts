@@ -15,6 +15,8 @@ Route.group(() => {
   Route.get('/profile', 'ProfileController.profile').as('profile')
   Route.resource('/aquarium', 'AquariumsController').as('aquarium')
   Route.resource('/stats', 'StatsController').as('stats')
+  Route.resource('/device', 'DevicesController').as('device')
   Route.get('/aquarium/stats/:id', 'AquariumsController.getStats').as('aquarium.getStats')
   Route.get('/user/aquarium/:id', 'UsersController.getAquariums').as('user.getAquariums')
+  Route.get('/user/device/:id', 'UsersController.getDevices').as('user.getDevices')
 }).middleware('auth')
