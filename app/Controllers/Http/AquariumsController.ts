@@ -32,7 +32,6 @@ export default class AquariumsController {
 
   public async getStats({ params }: HttpContextContract) {
     const aquarium = await Aquarium.findOrFail(params.id)
-    const stats = await aquarium.related('stats').query()
-    return stats
+    return await aquarium.related('stats').query()
   }
 }
