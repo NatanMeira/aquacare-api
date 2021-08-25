@@ -6,4 +6,9 @@ export default class UsersController {
     const user = await User.findOrFail(params.id)
     return await user.related('aquariums').query()
   }
+
+  public async getDevices({ params }: HttpContextContract) {
+    const user = await User.findOrFail(params.id)
+    return await user.related('devices').query()
+  }
 }
