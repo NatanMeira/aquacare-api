@@ -8,6 +8,7 @@ Route.get('health', async ({ response }) => {
 })
 
 Route.post('/login', 'Auth/LoginController.login').as('login')
+Route.post('/device/login', 'Auth/LoginController.deviceLogin').as('device.login')
 Route.post('/register', 'Auth/RegisterController.register').as('register')
 Route.post('/logout', 'Auth/LoginController.logout').as('logout')
 
