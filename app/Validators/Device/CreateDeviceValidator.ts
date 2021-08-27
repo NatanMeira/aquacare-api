@@ -7,10 +7,12 @@ export default class CreateDeviceValidator {
   public schema = schema.create({
     device_id: schema.string(),
     user_id: schema.number(),
+    aquarium_id: schema.number(),
   })
 
   public messages = {
     'device_id.required': 'O id do dispositivo é necessário',
     'user_id.required': 'O id do usuario é necessário',
+    'aquarium_id.required': 'O id do aquario é necessário',
   }
 }
