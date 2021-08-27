@@ -4,10 +4,6 @@ import UpdateAquariumValidator from 'App/Validators/Aquarium/UpdateAquariumValid
 import CreateAquariumValidator from 'App/Validators/Aquarium/CreateAquariumValidator'
 
 export default class AquariumsController {
-  public async index({}: HttpContextContract) {
-    return Aquarium.all()
-  }
-
   public async store({ request }: HttpContextContract) {
     const aquariumData = await request.validate(CreateAquariumValidator)
     return Aquarium.create(aquariumData)
