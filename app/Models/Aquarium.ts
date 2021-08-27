@@ -1,7 +1,17 @@
 import { DateTime } from 'luxon'
-import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import {
+  BaseModel,
+  BelongsTo,
+  belongsTo,
+  column,
+  HasMany,
+  hasMany,
+  hasOne,
+  HasOne,
+} from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
 import Stats from 'App/Models/Stats'
+import Device from 'App/Models/Device'
 
 export default class Aquarium extends BaseModel {
   @column({ isPrimary: true })
@@ -27,4 +37,7 @@ export default class Aquarium extends BaseModel {
 
   @hasMany(() => Stats)
   public stats: HasMany<typeof Stats>
+
+  @hasOne(() => Device)
+  public device: HasOne<typeof Device>
 }
