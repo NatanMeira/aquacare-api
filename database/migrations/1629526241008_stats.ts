@@ -1,4 +1,5 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import { AmoniaStats } from 'App/Enum/AmoniaStats.enum'
 
 export default class AquariumStats extends BaseSchema {
   protected tableName = 'stats'
@@ -12,8 +13,7 @@ export default class AquariumStats extends BaseSchema {
         .references('id')
         .inTable('aquariums')
         .onDelete('CASCADE')
-      table.string('amonia', 255).notNullable()
-      table.string('ph', 255).notNullable()
+      table.enum('amonia', Object.values(AmoniaStats)).notNullable()
       table.boolean('is_habitable').defaultTo('false')
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
