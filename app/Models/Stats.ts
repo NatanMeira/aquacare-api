@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, BelongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import Aquarium from 'App/Models/Aquarium'
+import { AmoniaStats } from 'App/Enum/AmoniaStats.enum'
 
 export default class Stats extends BaseModel {
   @column({ isPrimary: true })
@@ -10,10 +11,7 @@ export default class Stats extends BaseModel {
   public aquariumId: number
 
   @column()
-  public amonia: string
-
-  @column()
-  public ph: string
+  public amonia: AmoniaStats
 
   @column()
   public is_habitable: boolean
