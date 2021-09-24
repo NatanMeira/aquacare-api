@@ -16,11 +16,8 @@ export default class LoginController {
   }
 
   async deviceLogin({ request, auth }: HttpContextContract) {
-    console.log('fudeu')
     const deviceData = await request.validate(DeviceLoginValidator)
     const device = await Device.findByOrFail('device_id', deviceData.device_id)
-    // const user = device.user
-
     return auth.use('device').login(device)
   }
 }
