@@ -3,11 +3,13 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { AmoniaStats } from 'App/Enum/AmoniaStats.enum'
 
 export default class CreateStatsValidator {
-  constructor(protected ctx: HttpContextContract) {}
+  private amonia: any[] = [];
+
+  constructor(protected ctx: HttpContextContract) { }
 
   public schema = schema.create({
     device_id: schema.string(),
-    amonia: schema.enum(Object.values(AmoniaStats)),
+    amonia: schema.enum([...Object.values(AmoniaStats), 'undetected']),
   })
 
   public messages = {

@@ -1,6 +1,4 @@
 export enum AmoniaStats {
-  ALARM = 'alarm',
-  ALERT = 'alert',
-  TOXIC = 'toxic',
-  SAFE = 'safe',
+  SAFE = 'safe/alert',
+  DANGEROUS = 'alarm/toxic'
 }
