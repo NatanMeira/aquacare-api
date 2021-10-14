@@ -19,6 +19,9 @@ Route.group(() => {
   Route.get('/aquarium/stats/:id', 'AquariumsController.getStats').as('aquarium.getStats')
   Route.get('/user/aquarium/:id', 'UsersController.getAquariums').as('user.getAquariums')
   Route.get('/user/device/:id', 'UsersController.getDevices').as('user.getDevices')
+  Route.get('/user/aquariums/last-stats', 'UsersController.getLastUpdateAquariumWithStats').as(
+    'user.last-stats'
+  )
 }).middleware('auth:api')
 
 Route.group(() => {
