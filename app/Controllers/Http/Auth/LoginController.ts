@@ -4,12 +4,13 @@ import DeviceLoginValidator from 'App/Validators/Device/DeviceLoginValidator'
 import Device from 'App/Models/Device'
 
 export default class LoginController {
-  async login({ request, auth }: HttpContextContract) {
+  async login({ request, auth, response }: HttpContextContract) {
     const userData = await request.validate(LoginValidator)
     const { email, password } = userData
     const authenticate = await await auth.use('api').attempt(email, password)
     if (authenticate) {
-      return { user: authenticate.user, jwt: authenticate.token }
+      response.send({ user: authenticate.user, jwt: authenticate.token })
+      // return { user: authenticate.user, jwt: authenticate.token }repl
     } else {
       return { error: 'Incorrect credentials' }
     }
