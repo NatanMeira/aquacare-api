@@ -3,8 +3,6 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { AmoniaStats } from 'App/Enum/AmoniaStats.enum'
 
 export default class CreateStatsValidator {
-  private amonia: any[] = [];
-
   constructor(protected ctx: HttpContextContract) { }
 
   public schema = schema.create({
