@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "node ace build --production",
-    "start": "node server.js",
+    "start": "ENV_SILENT=true node build/server.js",
     "predev": "node ace migration:run",
     "dev": "node ace serve --watch",
     "lint": "eslint . --ext=.ts",
