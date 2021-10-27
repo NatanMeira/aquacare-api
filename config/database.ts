@@ -7,9 +7,8 @@
 
 import Env from '@ioc:Adonis/Core/Env'
 import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
-import Application from '@ioc:Adonis/Core/Application'
+// import Application from '@ioc:Adonis/Core/Application'
 
-console.log(Application.tmpPath('db.sqlite3'))
 const databaseConfig: DatabaseConfig = {
   /*
   |--------------------------------------------------------------------------
@@ -53,7 +52,7 @@ const databaseConfig: DatabaseConfig = {
     sqlite: {
       client: 'sqlite',
       connection: {
-        filename: Application.databasePath('db.sqlite3'),
+        filename: Env.get('DB_PATH'),
       },
       migrations: {
         naturalSort: true,
