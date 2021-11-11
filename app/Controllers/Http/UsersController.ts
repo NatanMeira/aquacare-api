@@ -19,8 +19,8 @@ export default class UsersController {
       'select S.*, A.`name`, A.liters from stats S inner join aquariums A on S.aquarium_id = A.id inner join users U on A.user_id = U.id where U.id = ? ORDER BY S.created_at DESC limit 1',
       [loggedUser.id]
     )
-    if (query && query[0][0]) {
-      return query[0][0]
+    if (query && query[0]) {
+      return query[0]
     } else {
       return response.notFound()
     }
