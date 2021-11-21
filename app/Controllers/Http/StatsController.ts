@@ -17,7 +17,7 @@ export default class StatsController {
       })
       return stats.save()
     } else {
-      return "stats: undetected"
+      return 'stats: undetected'
     }
   }
 
@@ -35,7 +35,7 @@ export default class StatsController {
 
       case AmoniaStats.DANGEROUS:
         // TODO send notification
-        return true
+        return false
     }
   }
 }
