@@ -1,6 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
-import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class UsersController {
   public async getAquariums({ params }: HttpContextContract) {
@@ -15,14 +14,16 @@ export default class UsersController {
 
   public async getLastUpdateAquariumWithStats({ auth, response }: HttpContextContract) {
     const loggedUser = auth.user as User
-    const query = await Database.rawQuery(
-      'select S.*, A.`name`, A.liters from stats S inner join aquariums A on S.aquarium_id = A.id inner join users U on A.user_id = U.id where U.id = ? ORDER BY S.created_at DESC limit 1',
-      [loggedUser.id]
-    )
-    if (query && query[0]) {
-      return query[0]
-    } else {
-      return response.notFound()
+    const user = await User.findOrFail(loggedUser.id)
+    const aquariums = await user.related('aquariums').query().first()
+    if (aquariums) {
+      const stats = await aquariums.related('stats').query().orderBy('created_at', 'desc').first()
+      if (stats) {
+        return { ...aquariums?.$attributes, ...stats?.$attributes }
+      } else {
+        return response.notFound()
+      }
     }
+    return response.notFound()
   }
 }
