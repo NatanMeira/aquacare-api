@@ -42,10 +42,7 @@ export default class StatsController {
               .from('No reply <contac@aquacare.com>')
               .to(mailTo)
               .subject('Atualização de Status de Amonia no Seu Aquário').html(`
-                <h1> Ocorreu uma atualização no status da amonia do seu aquário!</h1>
-                <p>
-                  O nivel de amonia atual é: Seguro / Em Alerta.
-                </p>
+                <img src="https://aquacare-pwa-c0niuok89-natanmeira.vercel.app/img/safe-email.png" alt="Safe Email">
               `)
           })
 
@@ -61,11 +58,7 @@ export default class StatsController {
               .from('No reply <contac@aquacare.com>')
               .to(mailTo)
               .subject('Atualização de Status de Seu Aquário').html(`
-                <h1> Ocorreu uma atualização no status da amonia do seu aquário!</h1>
-                <p>
-                  O nivel de amonia atual é: Alarmante / Tóxico. <br>
-                  É importante tomar medidas para corrigir o nivel de amonia do seu aquário, afim de evitar problemas e desconfortos ao seus peixes!
-                </p>
+                <img src="https://aquacare-pwa-c0niuok89-natanmeira.vercel.app/img/danger-email.png" alt="Danger Email">
               `)
           })
           return false
